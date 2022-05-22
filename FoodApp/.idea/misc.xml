@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.1465" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/rouded_edittext.xml" value="0.1795" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/font/miltonian_tattoo.xml" value="0.17435897435897435" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_home.xml" value="0.18229166666666666" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_login.xml" value="0.1724137931034483" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_main.xml" value="0.14957264957264957" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_registation.xml" value="0.14957264957264957" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_registration.xml" value="0.25" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_welcome.xml" value="0.14175724637681159" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/login_btn.xml" value="0.14957264957264957" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
