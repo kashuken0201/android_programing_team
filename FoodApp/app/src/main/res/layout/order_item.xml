@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/order_item_cv"
+    app:cardCornerRadius="30dp"
+    android:backgroundTint="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/photo_img_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/image_order_item_iv"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/welcome"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription" />
+            <TextView
+                android:id="@+id/quantity_order_item_tv"
+                android:layout_marginBottom="5dp"
+                android:text="x1"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="40dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/photo_img_ll"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UselessLeaf">
+            <TextView
+                android:id="@+id/food_name_order_item_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seafood Pizza"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/choices_order_item_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Spicy"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/id_order_item_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:text="#0001"
+            android:textSize="16sp"
+            android:textColor="@color/major"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/total_price_order_item_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Total: $15"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

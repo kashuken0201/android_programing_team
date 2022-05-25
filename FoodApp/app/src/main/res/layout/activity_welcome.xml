@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome_act"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activities.WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/background_welcome_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/welcome"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,UselessLeaf">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sofia"
+            android:layout_gravity="center"
+            android:text="Welcome to"
+            android:textColor="@color/black"
+            android:textSize="56sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/miltonian_tattoo"
+            android:gravity="top"
+            android:textStyle="italic"
+            android:text="Food Clowns"
+            android:textColor="#012AFF"
+            android:textSize="32sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/sansita"
+            android:letterSpacing="0.05"
+            android:layout_gravity="center"
+            android:text="Your favourite foods delivered\nfast at your door"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="400dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,UselessLeaf">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <View
+                android:id="@+id/line_1"
+                android:layout_width="90dp"
+                android:layout_gravity="center"
+                android:layout_height="2dp"
+                android:alpha="0.9"
+                android:background="@drawable/line"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:text="sign in with"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <View
+                android:id="@+id/line_2"
+                android:layout_width="90dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:background="@drawable/line" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/fb_login_welcome_mb"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="20dp"
+                android:layout_gravity="center"
+                app:cornerRadius="20dp"
+                android:text="FACEBOOK"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                app:iconSize="32dp"
+                app:icon="@drawable/fb_logo"
+                app:iconTintMode="multiply"
+                app:iconGravity="start"
+                tools:ignore="HardcodedText"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/gg_login_welcome_mb"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                app:cornerRadius="20dp"
+                android:text="GOOGLE"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                app:iconSize="32dp"
+                app:icon="@drawable/gg_logo"
+                app:iconTintMode="multiply"
+                app:iconGravity="start"
+                tools:ignore="HardcodedText"/>
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/other_login_welcome_efab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:layout_gravity="center"
+            android:text="Start with email or phone"
+            android:textAllCaps="false"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:strokeWidth="2dp"
+            app:strokeColor="@color/white"
+            app:backgroundTint="#30000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription,HardcodedText" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? "
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/link_signup_welcome_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_in"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
