@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.clowns.foodapp.R;
 import com.clowns.foodapp.databinding.ActivityWelcomeBinding;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -30,6 +29,14 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), RegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.ggLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });

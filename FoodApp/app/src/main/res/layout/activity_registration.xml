@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_act"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main"
@@ -10,9 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_margin="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="UselessLeaf">
         <TextView
             android:layout_width="match_parent"
@@ -20,7 +23,7 @@
             android:layout_marginBottom="40dp"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
-            android:gravity="top"
+            android:layout_gravity="center"
             android:text="Sign up"
             android:textColor="@color/black"
             android:textSize="32sp"
@@ -31,15 +34,16 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
-            android:gravity="top"
+            android:layout_gravity="center"
             android:text="Full name"
             android:textColor="@color/label_c_txt"
             android:textSize="16sp"
             tools:ignore="HardcodedText"/>
         <EditText
-            android:id="@+id/name_register"
+            android:id="@+id/name_register_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:padding="10dp"
             android:textSize="16sp"
@@ -52,15 +56,16 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
-            android:gravity="top"
+            android:layout_gravity="center"
             android:text="E-mail"
             android:textColor="@color/label_c_txt"
             android:textSize="16sp"
             tools:ignore="HardcodedText"/>
         <EditText
-            android:id="@+id/email_phone_register"
+            android:id="@+id/email_phone_register_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:padding="10dp"
             android:textSize="16sp"
@@ -73,7 +78,7 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
-            android:gravity="top"
+            android:layout_gravity="center"
             android:text="Password"
             android:textColor="@color/label_c_txt"
             android:textSize="16sp"
@@ -81,10 +86,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="20dp">
 
             <EditText
-                android:id="@+id/password_register"
+                android:id="@+id/password_register_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -92,31 +98,42 @@
                 android:inputType="textPassword"
                 android:textSize="16sp"
                 android:background="@drawable/rounded_edittext"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 tools:ignore="Autofill,HardcodedText,MissingConstraints" />
 
-            <ImageView
-                android:id="@+id/show_pass_btn"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/show_password_register_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/eye"
+                app:fabCustomSize="24dp"
+                app:srcCompat="@drawable/eye"
+                app:backgroundTint="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription,MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/signup_btn"
-            android:layout_width="190dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/signup_register_efab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="sign up"
+            android:layout_marginStart="50dp"
             android:layout_marginBottom="20dp"
-            app:cornerRadius="50dp"
-            android:text="SIGN UP"
+            android:layout_marginEnd="50dp"
+            android:textAlignment="center"
             android:textColor="@color/white"
-            android:backgroundTint="@color/major"
-            tools:ignore="HardcodedText"/>
+            android:textStyle="bold"
+            android:textSize="14sp"
+            app:backgroundTint="@color/major"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription,HardcodedText" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -131,7 +148,7 @@
                 android:textColor="@color/black"
                 tools:ignore="HardcodedText" />
             <TextView
-                android:id="@+id/link_register"
+                android:id="@+id/link_login_register_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Login"
@@ -183,7 +200,7 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/fb_login_btn"
+                android:id="@+id/fb_login_register_mb"
                 style="@style/Widget.MaterialComponents.Button.Icon"
                 android:layout_width="150dp"
                 android:layout_height="60dp"
@@ -199,7 +216,7 @@
                 app:iconGravity="start"
                 tools:ignore="HardcodedText"/>
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/gg_login_btn"
+                android:id="@+id/gg_login_register_mb"
                 style="@style/Widget.MaterialComponents.Button.Icon"
                 android:layout_width="150dp"
                 android:layout_height="60dp"

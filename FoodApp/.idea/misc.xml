@@ -3,16 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/color_nav.xml" value="0.205" />
         <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.1465" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1675" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1675" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/ic_baseline_keyboard_arrow_left_24.xml" value="0.1675" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/ic_baseline_remove_24.xml" value="0.1675" />
         <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/rouded_edittext.xml" value="0.1795" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/rounded_edittext.xml" value="0.1905" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/drawable/rounded_img.xml" value="0.17" />
         <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/font/miltonian_tattoo.xml" value="0.17435897435897435" />
         <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_home.xml" value="0.18229166666666666" />
-        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_login.xml" value="0.1724137931034483" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_login.xml" value="0.25256410256410255" />
         <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_main.xml" value="0.14957264957264957" />
         <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_registation.xml" value="0.14957264957264957" />
         <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_registration.xml" value="0.25" />
-        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_welcome.xml" value="0.14175724637681159" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/activity_welcome.xml" value="0.33" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/cart_item.xml" value="0.5" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/category_item.xml" value="0.5" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/choice_item.xml" value="0.22" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/food_drink_item.xml" value="0.33" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/fragment_detail_item.xml" value="0.2536231884057971" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/fragment_main.xml" value="0.2536231884057971" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/fragment_my_cart.xml" value="0.22" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/fragment_my_favourite.xml" value="0.25256410256410255" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/fragment_my_orders.xml" value="0.2536231884057971" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/fragment_my_profile.xml" value="0.33" />
         <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/login_btn.xml" value="0.14957264957264957" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/layout/order_item.xml" value="0.33" />
+        <entry key="..\:/Study/Ken3/HKII/LapTrinhDiDong/ClownsOfTheGalaxy/android_programing_team/FoodApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.14957264957264957" />
       </map>
     </option>
   </component>

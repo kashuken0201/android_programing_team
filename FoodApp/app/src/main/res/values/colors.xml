@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main">#F0E1E1</color>
     <color name="label_c_txt">#A6A5AF</color>
-    <color name="major">#FD9072</color>
+    <color name="major">#FE724C</color>
+    <color name="bottom_nav">#BF2134</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>
