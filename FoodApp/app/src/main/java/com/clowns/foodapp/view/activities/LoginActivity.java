@@ -8,6 +8,8 @@ import com.clowns.foodapp.R;
 
 public class LoginActivity extends AppCompatActivity {
 
+    // Created by PhatTT
+    // Edited by PhatTT
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

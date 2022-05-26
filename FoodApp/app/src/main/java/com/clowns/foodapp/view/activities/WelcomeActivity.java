@@ -17,7 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
         View viewRoot = binding.getRoot();
         setContentView(viewRoot);
 
-        binding.otherLoginBtn.setOnClickListener(new View.OnClickListener() {
+        binding.otherLoginWelcomeEfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), LoginActivity.class);
@@ -25,7 +25,7 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        binding.fbLoginBtn.setOnClickListener(new View.OnClickListener() {
+        binding.fbLoginWelcomeMb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), RegistrationActivity.class);
@@ -33,7 +33,7 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        binding.ggLoginBtn.setOnClickListener(new View.OnClickListener() {
+        binding.ggLoginWelcomeMb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), HomeActivity.class);
