@@ -61,9 +61,10 @@
             tools:ignore="UselessLeaf">
             <View
                 android:id="@+id/line_1"
-                android:layout_width="90dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
-                android:layout_height="2dp"
+                android:layout_marginBottom="10dp"
+                android:layout_height="3dp"
                 android:alpha="0.9"
                 android:background="@drawable/line" />
             <LinearLayout
