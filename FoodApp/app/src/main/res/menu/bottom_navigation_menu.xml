@@ -20,7 +20,7 @@
         android:title="Cart"
         tools:ignore="HardcodedText" />
     <item
-        android:id="@+id/notification_page"
+        android:id="@+id/order_page"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_notifications_24"
         android:title="Notification"
