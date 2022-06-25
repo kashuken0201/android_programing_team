@@ -3,64 +3,80 @@ package com.clowns.foodapp.view.cart;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.clowns.foodapp.R;
+import com.clowns.foodapp.databinding.FragmentMyCartBinding;
+import com.clowns.foodapp.model.ChoiseCartItem;
+import com.clowns.foodapp.model.Food;
+import com.clowns.foodapp.model.FoodCart;
+import com.clowns.foodapp.viewmodel.adapters.CartAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MyCartFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyCartFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    List<FoodCart> foodCartList;
+    CartAdapter cartAdapter;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    FragmentMyCartBinding binding;
+
 
     public MyCartFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyCartFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MyCartFragment newInstance(String param1, String param2) {
-        MyCartFragment fragment = new MyCartFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_cart, container, false);
+        binding = FragmentMyCartBinding.bind(view);
+
+        binding.cartsMyCartRv.setLayoutManager(new LinearLayoutManager(getContext()));
+//
+//        foodCartList = new ArrayList<>();
+//
+//        List<ChoiseCartItem> choiseCartItemList = new ArrayList<>();
+//        choiseCartItemList.add(new ChoiseCartItem("Pho mai", 3.99f));
+//        choiseCartItemList.add(new ChoiseCartItem("Nam", 1.99f));
+//
+//        Food food1 = new Food("Pizza ga", 9.99f, "https://s23209.pcdn.co/wp-content/uploads/2021/10/BBQ-Chicken-PizzaIMG_0027.jpg");
+//        Food food2 = new Food("Hamburger", 9.99f,"https://hamburgerdanang.com/wp-content/uploads/2021/03/the-ultimate-hamburger.jpg");
+//        Food food3 = new Food("Pizza dac biet", 9.99f,"https://hanamihotel.com/wp-content/uploads/2019/12/Pizza-4P%E2%80%99s-%C4%90%C3%A0-N%E1%BA%B5ng-2.jpg");
+//
+//        foodCartList.add(new FoodCart(food1,1, choiseCartItemList));
+//        foodCartList.add(new FoodCart(food2,3, new ArrayList<>()));
+//        foodCartList.add(new FoodCart(food3,2, choiseCartItemList));
+//        foodCartList.add(new FoodCart(food1,1, choiseCartItemList));
+//        foodCartList.add(new FoodCart(food2,3, new ArrayList<>()));
+//        foodCartList.add(new FoodCart(food3,2, choiseCartItemList));
+//        foodCartList.add(new FoodCart(food1,1, choiseCartItemList));
+//        foodCartList.add(new FoodCart(food2,3, new ArrayList<>()));
+//        foodCartList.add(new FoodCart(food3,2, choiseCartItemList));
+//
+//        cartAdapter = new CartAdapter(foodCartList);
+//        binding.cartsMyCartRv.setAdapter(cartAdapter);
+//
+//        cartAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+//            @Override
+//            public void onChanged() {
+//                super.onChanged();
+//                binding.subtotalPriceMyCartTv.setText("$"+String.valueOf(cartAdapter.getSubtotal()));
+//                binding.totalPriceMyCartTv.setText("$"+String.valueOf(cartAdapter.getTotal()));
+//            }
+//        });
+//
+//        binding.subtotalPriceMyCartTv.setText("$"+String.valueOf(cartAdapter.getSubtotal()));
+//        binding.totalPriceMyCartTv.setText("$"+String.valueOf(cartAdapter.getTotal()));
+        return view;
     }
+
 }
