@@ -31,7 +31,7 @@ public class DetailItemFragment extends Fragment {
 
     // test function
     void addTestData(){
-        food= new Food("com ga","123",1000000,"hahaha");
+        food= new Food("com ga","ngu",1000000,"123","hahaha");
     }
 
     @Override
