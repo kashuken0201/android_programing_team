@@ -24,7 +24,6 @@ import com.google.android.material.navigation.NavigationBarView;
 public class HomeActivity extends AppCompatActivity {
 
     ActivityHomeBinding binding;
-
     // Edited by PhatTT
     @Override
     protected void onCreate(Bundle savedInstanceState) {
