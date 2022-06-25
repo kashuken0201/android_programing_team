@@ -49,28 +49,30 @@ public class LoginAdapter extends BaseObservable {
     }
 
     public ArrayList<User> getListUsers(){
-        ArrayList<User> listUser = new ArrayList<>();
-        listUser.add(new User("nhan@gmail.com","12345678"));
-        return listUser;
+//        ArrayList<User> listUser = new ArrayList<>();
+//        listUser.add(new User("nhan@gmail.com","12345678"));
+//        return listUser;
+        return null;
     }
 
     public boolean checkLogin(){
-        User user = new User(getEmail(),getPassword());
-        if(user.isValidEmail() && user.isValidPassword()) {
-            for(int i=0;i<listUser.size();i++) {
-                if (user.getUsername().equals(listUser.get(i).getUsername())
-                        && user.getPassword().equals(listUser.get(i).getPassword())) {
-                    message.set("Succes");
-                    return true;
-
-                }
-            }
-        }
-        else {
-            message.set("Failed");
-            return false;
-        }
-        return  false;
+//        User user = new User(getEmail(),getPassword());
+//        if(user.isValidEmail() && user.isValidPassword()) {
+//            for(int i=0;i<listUser.size();i++) {
+//                if (user.getUsername().equals(listUser.get(i).getUsername())
+//                        && user.getPassword().equals(listUser.get(i).getPassword())) {
+//                    message.set("Succes");
+//                    return true;
+//
+//                }
+//            }
+//        }
+//        else {
+//            message.set("Failed");
+//            return false;
+//        }
+//        return  false;
+        return true;
     }
 
 }

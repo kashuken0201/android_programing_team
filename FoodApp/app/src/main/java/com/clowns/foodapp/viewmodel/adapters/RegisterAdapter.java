@@ -31,11 +31,12 @@ public class RegisterAdapter  extends BaseObservable {
     }
 
     public boolean checkRegister(){
-        User user = new User(getEmailRegister(),getPasswordRegister());
-        if(user.isValidEmail() && user.isValidPassword()) {
-            return true;
-        }
-        return false;
+//        User user = new User(getEmailRegister(),getPasswordRegister());
+//        if(user.isValidEmail() && user.isValidPassword()) {
+//            return true;
+//        }
+//        return false;
+        return true;
     }
 
 }
