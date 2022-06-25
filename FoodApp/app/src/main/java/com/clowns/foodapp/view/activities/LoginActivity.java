@@ -2,6 +2,7 @@ package com.clowns.foodapp.view.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.clowns.foodapp.R;
 import com.clowns.foodapp.databinding.ActivityLoginBinding;
 import com.clowns.foodapp.view.home.MainFragment;
+import com.clowns.foodapp.viewmodel.adapters.LoginAdapter;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -29,6 +31,9 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import javax.annotation.Nullable;
 
 public class LoginActivity extends AppCompatActivity {
+
+    LoginAdapter loginAdapter;
+    ActivityLoginBinding activityLoginBinding;
 
     ActivityLoginBinding binding;
 
@@ -69,6 +74,28 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 signInWithGoogle();
+            }
+        });
+
+        activityLoginBinding = DataBindingUtil.setContentView(this,R.layout.activity_login);
+        loginAdapter = new LoginAdapter();
+        activityLoginBinding.setLoginAdapter(loginAdapter);
+
+        activityLoginBinding.loginLoginEfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(loginAdapter.checkLogin()){
+                    Intent intent = new Intent(view.getContext(), HomeActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        activityLoginBinding.linkRegisterLoginTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), RegistrationActivity.class);
+                startActivity(intent);
             }
         });
     }

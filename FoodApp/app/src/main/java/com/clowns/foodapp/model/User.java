@@ -1,5 +1,8 @@
 package com.clowns.foodapp.model;
 
+import android.text.TextUtils;
+import android.util.Patterns;
+
 import java.util.Arrays;
 import java.util.Map;
 
@@ -65,5 +68,13 @@ public class User {
 
     public void setFavourite(Map<Integer, Arrays> favourite) {
         this.favourite = favourite;
+    }
+
+    public boolean isValidEmail(){
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public boolean isValidPassword(){
+        return !TextUtils.isEmpty(password) && password.length()>=8;
     }
 }
