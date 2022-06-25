@@ -41,6 +41,7 @@ public class Food {
 
     public void setFoodType(String foodType) {
         this.foodType = foodType;
+
     }
 
     public double getPrice() {
@@ -50,6 +51,8 @@ public class Food {
     public void setPrice(double price) {
         this.price = price;
     }
+
+
 
     public String getDescription() {
         return description;
