@@ -17,11 +17,12 @@ import android.view.ViewGroup;
 
 import com.clowns.foodapp.R;
 import com.clowns.foodapp.databinding.FragmentDetailItemBinding;
+import com.clowns.foodapp.model.Food;
 import com.clowns.foodapp.viewmodel.adapters.ChoiceItemAdapter;
 //Edited by PVK
 public class DetailItemFragment extends Fragment {
 //    no model
-//    private Food food;
+    private Food food;
     private int quantity=1;
     // test favorite
     private boolean f=true;
@@ -29,9 +30,9 @@ public class DetailItemFragment extends Fragment {
     private ChoiceItemAdapter choiceItemAdapter;
 
     // test function
-//    void addTestData(){
-//        food= new Food("com ga",1000000,"123","hahaha");
-//    }
+    void addTestData(){
+        food= new Food("com ga","123",1000000,"hahaha");
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class DetailItemFragment extends Fragment {
 //            food=(Food) getArguments().getSerializable("food");
         }
         // add test data
-//        addTestData();
+        addTestData();
     }
 
     @Override
@@ -83,6 +84,7 @@ public class DetailItemFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 // no model
 //                bundle.putSerializable("Food",food);
+//                bundle.putSerializable("quantity",quantity);
 
                 Fragment fragment = new MainFragment();
                 fragment.setArguments(bundle);
@@ -142,11 +144,7 @@ public class DetailItemFragment extends Fragment {
         binding.choicesDetailItemRv.setLayoutManager(new LinearLayoutManager(getContext()));
     }
     private void setDetailFood(){
-        // no model
-//        binding.descriptionDetailItemTv.setText(food.getDescription());
-//        binding.priceDetailItemTv.setText(String.valueOf(food.getPrice()));
-        binding.descriptionDetailItemTv.setText("PVK là thần");
-        binding.priceDetailItemTv.setText(String.valueOf(1000000));
+        binding.setFood(food);
         binding.quantityDetailItemTv.setText(String.valueOf(quantity));
 
     }

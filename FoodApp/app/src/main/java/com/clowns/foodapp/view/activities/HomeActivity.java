@@ -44,8 +44,7 @@ public class HomeActivity extends AppCompatActivity {
                         loadFragment(fragment);
                         return true;
                     case R.id.favourite_page:
-//                        fragment = new MyFavouriteFragment();
-                        fragment = new DetailItemFragment();
+                        fragment = new MyFavouriteFragment();
                         loadFragment(fragment);
                         return true;
                     case R.id.cart_page:
