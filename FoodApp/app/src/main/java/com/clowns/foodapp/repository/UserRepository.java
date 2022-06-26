@@ -26,6 +26,7 @@ public class UserRepository {
     }
 
     public MutableLiveData<User> getUser(){
+        Log.w("DEBUG", "DM ANH KHAI."+ "1212312");
         db.collection("users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -37,6 +38,7 @@ public class UserRepository {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 user = document.toObject(User.class);
                             }
+
                             userLiveData.postValue(user);
                         } else {
                             Log.w("DEBUG", "Error getting documents.", task.getException());
