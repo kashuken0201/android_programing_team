@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/category_item_cv"
+    android:elevation="0dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/main"
-    >
+    android:backgroundTint="@color/main">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/category_item_mb"
@@ -24,8 +24,8 @@
         android:textColor="@color/black"
         android:textSize="11sp"
         app:icon="@drawable/welcome"
+        app:iconPadding="8dp"
         app:iconGravity="textTop"
-
         app:iconSize="52dp"
         app:iconTintMode="multiply"
         tools:ignore="HardcodedText,SmallSp" />

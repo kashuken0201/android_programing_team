@@ -1,30 +1,33 @@
-package com.clowns.foodapp.model;
+package com.clowns.foodapp.model.fisebase;
 
-import java.util.Arrays;
-import java.util.Map;
+import java.io.Serializable;
 
-public class Food {
-    private String foodId;
+public class FoodDrink implements Serializable {
+    private String id;
     private String foodName;
-    private String foodType;
+    private String categoryName;
     private double price;
     private String description;
     private String url;
 
-    public Food(String foodName, String foodType, double price, String description, String url) {
+    public FoodDrink() {
+
+    }
+
+    public FoodDrink(String foodName, String categoryName, double price, String description, String url) {
         this.foodName = foodName;
-        this.foodType = foodType;
+        this.categoryName = categoryName;
         this.price = price;
         this.description = description;
         this.url = url;
     }
 
-    public String getFoodId() {
-        return foodId;
+    public String getId() {
+        return id;
     }
 
-    public void setFoodId(String foodId) {
-        this.foodId = foodId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFoodName() {
@@ -35,13 +38,12 @@ public class Food {
         this.foodName = foodName;
     }
 
-    public String getFoodType() {
-        return foodType;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setFoodType(String foodType) {
-        this.foodType = foodType;
-
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public double getPrice() {
@@ -51,8 +53,6 @@ public class Food {
     public void setPrice(double price) {
         this.price = price;
     }
-
-
 
     public String getDescription() {
         return description;

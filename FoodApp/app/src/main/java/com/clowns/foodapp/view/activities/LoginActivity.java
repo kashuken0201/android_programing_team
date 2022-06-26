@@ -33,26 +33,25 @@ import javax.annotation.Nullable;
 public class LoginActivity extends AppCompatActivity {
 
     LoginAdapter loginAdapter;
-    ActivityLoginBinding activityLoginBinding;
-
     ActivityLoginBinding binding;
 
     private FirebaseAuth mAuth;
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
+
     private final static int RC_SIGN_IN = 100;
 
-    // PhuocDD
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), MainFragment.class);
-            startActivity(intent);
-        }
-    }
+//    // PhuocDD
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//            Intent intent = new Intent(getApplicationContext(), MainFragment.class);
+//            startActivity(intent);
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,27 +60,27 @@ public class LoginActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        // PhuocDD
-        mAuth = FirebaseAuth.getInstance();
+//        // PhuocDD
+//        mAuth = FirebaseAuth.getInstance();
+//
+//        FacebookSdk.sdkInitialize(getApplicationContext());
+//        AppEventsLogger.activateApp(this);
+//
+//        createSignInGoogle();
+//
+//        // PhuocDD
+//        binding.ggLoginLoginMb.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                signInWithGoogle();
+//            }
+//        });
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
-
-        createSignInGoogle();
-
-        // PhuocDD
-        binding.ggLoginLoginMb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signInWithGoogle();
-            }
-        });
-
-        activityLoginBinding = DataBindingUtil.setContentView(this,R.layout.activity_login);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         loginAdapter = new LoginAdapter();
-        activityLoginBinding.setLoginAdapter(loginAdapter);
+        binding.setLoginAdapter(loginAdapter);
 
-        activityLoginBinding.loginLoginEfab.setOnClickListener(new View.OnClickListener() {
+        binding.loginLoginEfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(loginAdapter.checkLogin()){
@@ -91,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        activityLoginBinding.linkRegisterLoginTv.setOnClickListener(new View.OnClickListener() {
+        binding.linkRegisterLoginTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), RegistrationActivity.class);
@@ -100,51 +99,51 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // PhuocDD
-    private void createSignInGoogle() {
-        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail().build();
-        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
-    }
-
-    // PhuocDD
-    private void signInWithGoogle() {
-        Intent signInIntent = googleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-
-    // PhuocDD
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-
-        if(requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    // PhuocDD
-    private void firebaseAuthWithGoogle(GoogleSignInAccount account){
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(), MainFragment.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(LoginActivity.this, "Sign in with Google failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+//    // PhuocDD
+//    private void createSignInGoogle() {
+//        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestEmail().build();
+//        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+//    }
+//
+//    // PhuocDD
+//    private void signInWithGoogle() {
+//        Intent signInIntent = googleSignInClient.getSignInIntent();
+//        startActivityForResult(signInIntent, RC_SIGN_IN);
+//    }
+//
+//    // PhuocDD
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//
+//        if(requestCode == RC_SIGN_IN) {
+//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//            try {
+//                GoogleSignInAccount account = task.getResult(ApiException.class);
+//                firebaseAuthWithGoogle(account);
+//            } catch (ApiException e) {
+//                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
+//
+//    // PhuocDD
+//    private void firebaseAuthWithGoogle(GoogleSignInAccount account){
+//        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+//        mAuth.signInWithCredential(credential)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            FirebaseUser user = mAuth.getCurrentUser();
+//                            Intent intent = new Intent(getApplicationContext(), MainFragment.class);
+//                            startActivity(intent);
+//                        } else {
+//                            Toast.makeText(LoginActivity.this, "Sign in with Google failed", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//    }
 }

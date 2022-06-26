@@ -1,6 +1,7 @@
 package com.clowns.foodapp.viewmodel.adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,18 +9,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.clowns.foodapp.R;
-import com.clowns.foodapp.model.FoodDrinkModel;
+import com.clowns.foodapp.model.fisebase.FoodDrink;
 
 import java.util.List;
 
 public class FoodDrinkAdapter extends RecyclerView.Adapter<FoodDrinkAdapter.ViewHolder> {
     Context context;
-    List<FoodDrinkModel> foodDrinkList;
+    List<FoodDrink> foodDrinkList;
 
-    public FoodDrinkAdapter(Context context, List<FoodDrinkModel> foodDrinkList) {
+    public FoodDrinkAdapter(Context context, List<FoodDrink> foodDrinkList) {
         this.context = context;
         this.foodDrinkList = foodDrinkList;
     }
@@ -32,9 +35,9 @@ public class FoodDrinkAdapter extends RecyclerView.Adapter<FoodDrinkAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull FoodDrinkAdapter.ViewHolder holder, int position) {
-        holder.imgFoodDrink.setImageResource(foodDrinkList.get(position).getImage());
-        holder.txtNameFoodDrink.setText(foodDrinkList.get(position).getName());
-        holder.txtDescriptionFoodDrink.setText(foodDrinkList.get(position).getDescription());
+//        holder.imgFoodDrink.setImageResource(foodDrinkList.get(position).getImage());
+        holder.tvFoodDrinkName.setText(foodDrinkList.get(position).getFoodName());
+        holder.tvDescriptionFoodDrink.setText(foodDrinkList.get(position).getDescription());
     }
 
     @Override
@@ -43,15 +46,26 @@ public class FoodDrinkAdapter extends RecyclerView.Adapter<FoodDrinkAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgFoodDrink;
-        TextView txtNameFoodDrink, txtDescriptionFoodDrink;
+        CardView cvFoodDrink;
+        ImageView ivFoodDrink;
+        TextView tvFoodDrinkName, tvDescriptionFoodDrink;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgFoodDrink = itemView.findViewById(R.id.image_food_drink_item_iv);
-            txtNameFoodDrink = itemView.findViewById(R.id.food_name_food_drink_item_tv);
-            txtDescriptionFoodDrink = itemView.findViewById(R.id.description_food_drink_item_tv);
+            cvFoodDrink = itemView.findViewById(R.id.food_drink_item_cv);
+            ivFoodDrink = itemView.findViewById(R.id.image_food_drink_item_iv);
+            tvFoodDrinkName = itemView.findViewById(R.id.food_name_food_drink_item_tv);
+            tvDescriptionFoodDrink = itemView.findViewById(R.id.description_food_drink_item_tv);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FoodDrink food = foodDrinkList.get(getAdapterPosition());
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("food", food);
+                    Navigation.findNavController(view).navigate(R.id.detailItemFragment, bundle);
+                }
+            });
         }
     }
 }
