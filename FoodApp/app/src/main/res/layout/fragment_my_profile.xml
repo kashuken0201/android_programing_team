@@ -5,7 +5,7 @@
     <data>
         <variable
             name="user"
-            type="com.clowns.foodapp.model.User" />
+            type="com.clowns.foodapp.model.fisebase.User" />
     </data>
     <FrameLayout
         android:id="@+id/my_profile_frag"
@@ -44,6 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="My Profile"
+                    android:layout_marginEnd="50dp"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="24sp"
@@ -117,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:padding="10dp"
-                    android:text="@{user.fullname}"
+                    android:text="@{user.fullName}"
                     android:textSize="16sp"
                     android:hint="Your full name"
                     android:background="@drawable/rounded_edittext"
@@ -190,34 +191,14 @@
                     android:hint="Your email"
                     android:background="@drawable/rounded_edittext"
                     tools:ignore="Autofill,HardcodedText,TextFields" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="sans-serif"
-                    android:textStyle="bold"
-                    android:gravity="top"
-                    android:text="Phone number"
-                    android:textColor="@color/label_c_txt"
-                    android:textSize="16sp"
-                    tools:ignore="HardcodedText"/>
-                <EditText
-                    android:id="@+id/phone_profile_et"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:padding="10dp"
-                    android:text="@{user.phone}"
-                    android:textSize="16sp"
-                    android:hint="Your phone number"
-                    android:background="@drawable/rounded_edittext"
-                    tools:ignore="Autofill,HardcodedText,TextFields" />
             </LinearLayout>
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/sign_out_efab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="70dp"
                 android:text="SIGN OUT"
                 android:textAlignment="center"
                 android:textColor="@color/white"

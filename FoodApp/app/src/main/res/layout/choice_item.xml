@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/choice_item_cv"
+    android:backgroundTint="@color/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,8 +13,8 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/image_choice_item_iv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:src="@drawable/welcome"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"

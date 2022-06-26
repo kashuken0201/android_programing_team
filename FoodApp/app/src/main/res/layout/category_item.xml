@@ -3,24 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/category_item_cv"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:elevation="0dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/main">
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/category_item_mb"
+
         android:layout_width="65dp"
         android:layout_height="110dp"
         android:layout_gravity="center"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:cornerRadius="40dp"
         android:backgroundTint="@color/major"
         android:fontFamily="sans-serif"
         android:text="Pizza"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="10sp"
+        android:textSize="11sp"
         app:icon="@drawable/welcome"
+        app:iconPadding="8dp"
         app:iconGravity="textTop"
-        app:iconSize="32dp"
+        app:iconSize="52dp"
         app:iconTintMode="multiply"
         tools:ignore="HardcodedText,SmallSp" />
 </androidx.cardview.widget.CardView>

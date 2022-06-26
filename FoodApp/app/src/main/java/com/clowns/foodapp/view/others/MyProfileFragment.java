@@ -11,10 +11,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.clowns.foodapp.R;
 import com.clowns.foodapp.databinding.FragmentMyProfileBinding;
-import com.clowns.foodapp.model.User;
+import com.clowns.foodapp.model.fisebase.User;
 import com.clowns.foodapp.view.activities.HomeActivity;
 import com.clowns.foodapp.view.activities.WelcomeActivity;
 
@@ -23,15 +22,7 @@ public class MyProfileFragment extends Fragment {
     FragmentMyProfileBinding binding;
     User user;
     // Edited by PhatTT
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            user = (User) getArguments().getSerializable("user");
-        }
-    }
 
-    // Edited by PhatTT
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +43,14 @@ public class MyProfileFragment extends Fragment {
                 Intent intent = new Intent(getContext(), WelcomeActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        binding.backProfileFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
