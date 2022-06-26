@@ -1,23 +1,12 @@
 package com.clowns.foodapp.viewmodel.adapters;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.ObservableField;
 
 
 import com.clowns.foodapp.BR;
-import com.clowns.foodapp.model.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.clowns.foodapp.model.fisebase.User;
 
 import java.util.ArrayList;
 
@@ -25,7 +14,7 @@ import java.util.ArrayList;
 public class LoginAdapter extends BaseObservable {
     private String email;
     private String password;
-    public ArrayList<User> listUser= getListUsers();
+    public ArrayList<User> listUser = getListUsers();
     public ObservableField<String> message= new ObservableField<>("Login");
 
     @Bindable

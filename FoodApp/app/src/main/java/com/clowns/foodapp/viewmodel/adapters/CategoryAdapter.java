@@ -1,7 +1,6 @@
 package com.clowns.foodapp.viewmodel.adapters;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.clowns.foodapp.R;
-import com.clowns.foodapp.model.CategoryModel;
+import com.clowns.foodapp.model.fisebase.Category;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
@@ -20,15 +19,12 @@ import java.util.List;
 public class CategoryAdapter  extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
     Context context;
-    List<CategoryModel> categoryList;
+    List<Category> categoryList;
 
-public CategoryAdapter(Context context, List<CategoryModel> categoryList) {
-        this.context = context;
-        this.categoryList = categoryList;
+    public CategoryAdapter(Context context, List<Category> categoryList) {
+            this.context = context;
+            this.categoryList = categoryList;
     }
-
-
-
 
     @NonNull
     @Override
@@ -38,8 +34,8 @@ public CategoryAdapter(Context context, List<CategoryModel> categoryList) {
 
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
-        holder.btnCategory.setIconResource(categoryList.get(position).getImage());
-        holder.btnCategory.setText(categoryList.get(position).getName());
+        holder.btnCategory.setIconResource(categoryList.get(position).getCategoryUrl());
+        holder.btnCategory.setText(categoryList.get(position).getCategoryName());
     }
 
     @Override
@@ -47,7 +43,7 @@ public CategoryAdapter(Context context, List<CategoryModel> categoryList) {
         return categoryList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         MaterialButton btnCategory;
 

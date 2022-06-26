@@ -155,7 +155,7 @@
             android:id="@+id/other_login_welcome_efab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="40dp"
+            android:layout_margin="15dp"
             android:layout_gravity="center"
             android:text="Start with email or phone"
             android:textAllCaps="false"

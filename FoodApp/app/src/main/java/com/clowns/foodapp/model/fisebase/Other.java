@@ -1,4 +1,4 @@
-package com.clowns.foodapp.model;
+package com.clowns.foodapp.model.fisebase;
 
 public class Other {
     private String otherId;
@@ -6,10 +6,13 @@ public class Other {
     private double price;
     private String url;
 
-    public Other(String otherName, double price, String url) {
+    public Other() {
+    }
+
+    public Other(String otherName, double otherPrice, String otherUrl) {
         this.otherName = otherName;
-        this.price = price;
-        this.url = url;
+        this.price = otherPrice;
+        this.url = otherUrl;
     }
 
     public String getOtherId() {

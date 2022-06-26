@@ -1,20 +1,25 @@
-package com.clowns.foodapp.model;
+package com.clowns.foodapp.model.fisebase;
 
 import android.text.TextUtils;
 import android.util.Patterns;
 
+import java.io.Serializable;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
-public class User {
+public class User implements Serializable {
     private String userId;
     private String fullName;
     private String email;
     private String password;
-    private Map<Integer, Arrays> cart;
-    private Map<Integer, Arrays> favourite;
+    private HashMap<String, Object> cart;
+    private HashMap<String, Object> favourite;
 
-    public User(String fullName, String email, String password, Map<Integer, Arrays> cart, Map<Integer, Arrays> favourite) {
+    public User() {
+    }
+
+    public User(String fullName, String email, String password, HashMap<String, Object> cart, HashMap<String, Object> favourite) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
@@ -54,19 +59,19 @@ public class User {
         this.password = password;
     }
 
-    public Map<Integer, Arrays> getCart() {
+    public HashMap<String, Object> getCart() {
         return cart;
     }
 
-    public void setCart(Map<Integer, Arrays> cart) {
+    public void setCart(HashMap<String, Object> cart) {
         this.cart = cart;
     }
 
-    public Map<Integer, Arrays> getFavourite() {
+    public HashMap<String, Object> getFavourite() {
         return favourite;
     }
 
-    public void setFavourite(Map<Integer, Arrays> favourite) {
+    public void setFavourite(HashMap<String, Object> favourite) {
         this.favourite = favourite;
     }
 

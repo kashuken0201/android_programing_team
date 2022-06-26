@@ -25,18 +25,26 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        binding.fbLoginWelcomeMb.setOnClickListener(new View.OnClickListener() {
+//        binding.fbLoginWelcomeMb.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(view.getContext(), RegistrationActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        binding.ggLoginWelcomeMb.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(view.getContext(), HomeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        binding.linkSignupWelcomeTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), RegistrationActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        binding.ggLoginWelcomeMb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });

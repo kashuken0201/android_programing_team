@@ -4,7 +4,6 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.clowns.foodapp.BR;
-import com.clowns.foodapp.model.User;
 
 public class RegisterAdapter  extends BaseObservable {
     private String emailRegister;
