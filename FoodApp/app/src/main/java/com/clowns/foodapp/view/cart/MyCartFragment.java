@@ -1,5 +1,6 @@
 package com.clowns.foodapp.view.cart;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -50,6 +51,8 @@ public class MyCartFragment extends Fragment {
     FoodDrinkViewModel foodDrinkViewModel;
     ChoiceItemViewModel choiceItemViewModel;
 
+    ProgressDialog progressDialog;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +80,7 @@ public class MyCartFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        progressDialog = new ProgressDialog(getContext());
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         foodDrinkSizeViewModel = new ViewModelProvider(this).get(FoodDrinkSizeViewModel.class);
         foodDrinkViewModel = new ViewModelProvider(this).get(FoodDrinkViewModel.class);
@@ -95,53 +99,14 @@ public class MyCartFragment extends Fragment {
 
         cartAdapter = new CartAdapter(foodDrinkCartList);
         binding.cartsMyCartRv.setAdapter(cartAdapter);
-
+        progressDialog.setTitle("Loading ...");
+        progressDialog.show();
         userViewModel.getUser(User.getInstance().getEmail()).observe(getViewLifecycleOwner(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
-                HashMap<String, Object> cart = user.getCart();
-                List<FoodDrinkCart> foodDrinkCartList1 = new ArrayList<>();
-                for (String keyitem : user.getCart().keySet()) {
-                    HashMap<String, Object> map = (HashMap<String, Object>) user.getCart().get(keyitem);
-                    FoodDrinkCart foodDrinkCart = new FoodDrinkCart();
-                    for (String key : map.keySet()) {
-                        if (key.equals("food")) {
-                            if (!(map.get(key) instanceof FoodDrink)){
-                                return;
-                            }
-
-                            foodDrinkCart.setItem((FoodDrink) map.get(key));
-                            Log.d("food", foodDrinkCart.getItem().getFoodName());
-                            foodDrinkCartList.add(foodDrinkCart);
-                        }
-
-                        if (key.equals("foodsize")) {
-                            if (!(map.get(key) instanceof FoodDrinkSize)){
-                                return;
-                            }
-
-                            foodDrinkCart.setSize((FoodDrinkSize) map.get(key));
-                            foodDrinkCartList.add(foodDrinkCart);
-                        }
-                        if (key.equals("quantity")){
-                            foodDrinkCart.setQuantity(Integer.valueOf(map.get(key).toString()));
-
-                        }
-                        if (key.equals("choiceItemList")) {
-                            HashMap<String, Object> choiceItemMap = (HashMap<String, Object>) map.get(key);
-                            List<ChoiceItem> choiceItemList = new ArrayList<>();
-                            for (String keyChoice : choiceItemMap.keySet()) {
-                                if (!(choiceItemMap.get(keyChoice) instanceof ChoiceItem)) {
-                                    return;
-                                }
-                                choiceItemList.add((ChoiceItem) choiceItemMap.get(keyChoice));
-                            }
-                            foodDrinkCart.setChoiceItemList(choiceItemList);
-                        }
-                    }
-                    foodDrinkCartList1.add(foodDrinkCart);
-                }
-                Log.d("foodDrinkCartList1", foodDrinkCartList1.size() + "");
+                List<FoodDrinkCart> foodDrinkCartList1 = user.getListFoodDrinkCart();
+                if(foodDrinkCartList1 == null) return;
+                progressDialog.dismiss();
                 foodDrinkCartList.clear();
                 foodDrinkCartList.addAll(foodDrinkCartList1);
                 cartAdapter.notifyDataSetChanged();

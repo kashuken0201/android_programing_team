@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,17 +23,13 @@ import android.view.ViewGroup;
 import com.clowns.foodapp.R;
 import com.clowns.foodapp.databinding.FragmentDetailItemBinding;
 import com.clowns.foodapp.model.fisebase.FoodDrinkSize;
-import com.clowns.foodapp.model.fisebase.Other;
 import com.clowns.foodapp.model.view.ChoiceItem;
 import com.clowns.foodapp.model.fisebase.FoodDrink;
 import com.clowns.foodapp.model.view.FoodDrinkCart;
-import com.clowns.foodapp.repository.OtherRepository;
 import com.clowns.foodapp.view.cart.MyCartFragment;
 import com.clowns.foodapp.viewmodel.ChoiceItemViewModel;
-import com.clowns.foodapp.viewmodel.FoodDrinkViewModel;
-import com.clowns.foodapp.viewmodel.adapters.CategoryAdapter;
 import com.clowns.foodapp.viewmodel.adapters.ChoiceItemAdapter;
-import com.clowns.foodapp.viewmodel.adapters.FoodDrinkAdapter;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +40,7 @@ public class DetailItemFragment extends Fragment {
     private FoodDrink food;
     private int quantity=1;
     // test favorite
-    private boolean f=true;
+    private boolean isFavourite;
     private FragmentDetailItemBinding binding;
     private ChoiceItemAdapter choiceItemAdapter;
     private ArrayList<ChoiceItem> choiceItemList;
@@ -55,6 +52,7 @@ public class DetailItemFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             food = (FoodDrink) getArguments().getSerializable("food");
+            isFavourite = getArguments().getBoolean("isFavourite");
         }
     }
 
@@ -85,7 +83,9 @@ public class DetailItemFragment extends Fragment {
     }
 
     private void setView(){
-        setChoiceItemView();
+        if (!(food.getCategoryName().equals("Drink"))) {
+            setChoiceItemView();
+        }
         setDetailFood();
     }
 
@@ -138,15 +138,21 @@ public class DetailItemFragment extends Fragment {
         });
     }
     private void setFavoriteFab(){
+        if(isFavourite == true){
+            binding.favouriteDetailItemFab.setImageTintList(ColorStateList.valueOf(Color.parseColor("#FE724C")));
+        }
+        else{
+            binding.favouriteDetailItemFab.setImageTintList(ColorStateList.valueOf(Color.parseColor("#F0E1E1")));
+        }
         binding.favouriteDetailItemFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(f == true){
-                    f=false;
+                if(isFavourite == true){
+                    isFavourite =false;
                     binding.favouriteDetailItemFab.setImageTintList(ColorStateList.valueOf(Color.parseColor("#F0E1E1")));
                 }
                 else{
-                    f=true;
+                    isFavourite =true;
                     binding.favouriteDetailItemFab.setImageTintList(ColorStateList.valueOf(Color.parseColor("#FE724C")));
                 }
             }
@@ -173,6 +179,7 @@ public class DetailItemFragment extends Fragment {
     }
     private void setDetailFood(){
         binding.setFood(food);
+        Picasso.get().load(food.getUrl()).into(binding.imageDetailItemIv);
         binding.quantityDetailItemTv.setText(String.valueOf(quantity));
     }
     private void setFavorite(){

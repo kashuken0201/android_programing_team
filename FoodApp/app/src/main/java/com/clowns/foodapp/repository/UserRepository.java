@@ -50,6 +50,7 @@ public class UserRepository {
                             List<Task<DocumentSnapshot>> tasks_reference_fooddrink = new ArrayList<>();
                             List<Task<DocumentSnapshot>> tasks_reference_fooddrinksize = new ArrayList<>();
                             List<Task<DocumentSnapshot>> tasks_reference_other = new ArrayList<>();
+                            List<Task<DocumentSnapshot>> tasks_favorite = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 User user = document.toObject(User.class);
                                 user.setUserId(document.getId());
@@ -83,7 +84,11 @@ public class UserRepository {
                                         }
                                     }
                                 }
-                                //wait for all food and food size to be loaded
+                                for (String key : user.getFavourite().keySet()) {
+                                    DocumentReference favoriteRef = (DocumentReference) user.getFavourite().get(key);
+                                    Task<DocumentSnapshot> task_reference_favorite = favoriteRef.get();
+                                    tasks_favorite.add(task_reference_favorite);
+                                }
                                 users.add(user);
                             }
                             if (users.size() > 0) {
@@ -143,6 +148,19 @@ public class UserRepository {
                                                     }
                                                 }
                                             }
+                                        }
+                                        userLiveData.setValue(user);
+                                    }
+                                });
+                                Tasks.whenAllSuccess(tasks_favorite).addOnSuccessListener(new OnSuccessListener<List<Object>>() {
+                                    @Override
+                                    public void onSuccess(List<Object> objects) {
+                                        int i = 0;
+                                        for (String keyitem : user.getFavourite().keySet()) {
+                                            FoodDrink foodDrink = ((DocumentSnapshot) objects.get(i)).toObject(FoodDrink.class);
+                                            foodDrink.setId(((DocumentSnapshot) objects.get(i)).getId());
+                                            user.getFavourite().put(keyitem, foodDrink);
+                                            i++;
                                         }
                                         userLiveData.setValue(user);
                                     }

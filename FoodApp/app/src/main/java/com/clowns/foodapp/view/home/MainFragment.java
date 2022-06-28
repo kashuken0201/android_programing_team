@@ -13,6 +13,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,7 @@ import com.clowns.foodapp.viewmodel.CategoryViewModel;
 import com.clowns.foodapp.viewmodel.FoodDrinkViewModel;
 import com.clowns.foodapp.viewmodel.adapters.CategoryAdapter;
 import com.clowns.foodapp.viewmodel.adapters.FoodDrinkAdapter;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +49,19 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    private void filterName(String text) {
+        ArrayList<FoodDrink> filteredList = new ArrayList<>();
+        for (FoodDrink item : foodDrinkAdapter.getFoodDrinkList()) {
+            String name = item.getFoodName();
+            if (name.toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        if (!filteredList.isEmpty()) {
+            foodDrinkAdapter.filterList(filteredList);
+        }
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,8 +75,22 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         progressDialog = new ProgressDialog(getContext());
-        loadCategory();
         loadFoodDrink();
+        loadCategory();
+
+        binding.searchMainEt.addTextChangedListener(new android.text.TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterName(s.toString());
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
         binding.profileMainMb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,12 +111,11 @@ public class MainFragment extends Fragment {
             @Override
             public void onChanged(List<Category> categoryList) {
                 progressDialog.dismiss();
-                categoryAdapter = new CategoryAdapter(getContext(), categoryList);
+                categoryAdapter = new CategoryAdapter(getContext(), categoryList, foodDrinkAdapter);
                 binding.categoryMainRv.setAdapter(categoryAdapter);
                 categoryAdapter.notifyDataSetChanged();
             }
         });
-        binding.categoryMainRv.setAdapter(categoryAdapter);
         binding.categoryMainRv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         binding.categoryMainRv.setHasFixedSize(true);
         binding.categoryMainRv.setNestedScrollingEnabled(false);

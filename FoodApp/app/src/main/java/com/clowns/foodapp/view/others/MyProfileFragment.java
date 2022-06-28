@@ -69,5 +69,15 @@ public class MyProfileFragment extends Fragment {
                 binding.nameProfileEt.setText(user.getFullName());
             }
         });
+        binding.signOutEfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), WelcomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                User.getInstance().setUser(null);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -1,6 +1,7 @@
 package com.clowns.foodapp.model.fisebase;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 
 import com.clowns.foodapp.model.view.ChoiceItem;
@@ -123,14 +124,76 @@ public class User implements Serializable {
         }
         return cartString;
     }
+    public List<FoodDrinkCart> getListFoodDrinkCart(){
+        List<FoodDrinkCart> foodDrinkCartList = new ArrayList<>();
+        for (String keyitem : this.getCart().keySet()) {
+            HashMap<String, Object> map = (HashMap<String, Object>) this.getCart().get(keyitem);
+            FoodDrinkCart foodDrinkCart = new FoodDrinkCart();
+            for (String key : map.keySet()) {
+                if (key.equals("food")) {
+                    if (!(map.get(key) instanceof FoodDrink)){
+                        return null;
+                    }
+
+                    foodDrinkCart.setItem((FoodDrink) map.get(key));
+                }
+
+                if (key.equals("foodsize")) {
+                    if (!(map.get(key) instanceof FoodDrinkSize)){
+                        return null;
+                    }
+
+                    foodDrinkCart.setSize((FoodDrinkSize) map.get(key));
+                }
+                if (key.equals("quantity")){
+                    foodDrinkCart.setQuantity(Integer.valueOf(map.get(key).toString()));
+
+                }
+                if (key.equals("choiceItemList")) {
+                    HashMap<String, Object> choiceItemMap = (HashMap<String, Object>) map.get(key);
+                    List<ChoiceItem> choiceItemList = new ArrayList<>();
+                    for (String keyChoice : choiceItemMap.keySet()) {
+                        if (!(choiceItemMap.get(keyChoice) instanceof ChoiceItem)) {
+                            return null;
+                        }
+                        choiceItemList.add((ChoiceItem) choiceItemMap.get(keyChoice));
+                    }
+                    foodDrinkCart.setChoiceItemList(choiceItemList);
+                }
+            }
+            foodDrinkCartList.add(foodDrinkCart);
+        }
+        return foodDrinkCartList;
+    }
+
+    public List<FoodDrink> getListFoodDrinkFavorite(){
+        List<FoodDrink> foodDrinkList = new ArrayList<>();
+        for (Object value : this.getFavourite().values()) {
+            if (!(value instanceof FoodDrink)){
+                return null;
+            }
+            foodDrinkList.add((FoodDrink) value);
+        }
+        return foodDrinkList;
+    }
 
     public void setUser(User user) {
-        this.userId = user.userId;
-        this.fullName = user.fullName;
-        this.email = user.email;
-        this.password = user.password;
-        this.cart = user.cart;
-        this.favourite = user.favourite;
+        if (user != null) {
+            this.userId = user.userId;
+            this.fullName = user.fullName;
+            this.email = user.email;
+            this.password = user.password;
+            this.cart = user.cart;
+            this.favourite = user.favourite;
+        }
+        else {
+            this.userId = "";
+            this.fullName = "";
+            this.email = "";
+            this.password = "";
+            this.cart = new HashMap<>();
+            this.favourite = new HashMap<>();
+        }
     }
 
 

@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding activityLoginBinding;
 
     UserViewModel userViewModel;
+    ProgressDialog progressDialog;
 
     // PhuocDD
 
@@ -52,23 +54,23 @@ public class LoginActivity extends AppCompatActivity {
         activityLoginBinding = DataBindingUtil.setContentView(this,R.layout.activity_login);
         loginAdapter = new LoginAdapter();
         activityLoginBinding.setLoginAdapter(loginAdapter);
+        progressDialog = new ProgressDialog(this);
 
 
 
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
-
-
         activityLoginBinding.loginLoginEfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                progressDialog.setTitle("Loading ...");
+                progressDialog.show();
                 userViewModel.getUser(activityLoginBinding.emailPhoneLoginEt.getText().toString()).observe(LoginActivity.this, new Observer<User>() {
                     @Override
                     public void onChanged(User user) {
+                        progressDialog.dismiss();
                         if(loginAdapter.checkLogin(user)){
                             User.getInstance().setUser(user);
-                            Log.d("DEBUG1",User.getInstance().getCartString());
                             Intent intent = new Intent(view.getContext(), HomeActivity.class);
                             startActivity(intent);
                         }
