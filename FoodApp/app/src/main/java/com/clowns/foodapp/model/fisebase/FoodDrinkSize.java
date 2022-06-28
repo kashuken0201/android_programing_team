@@ -3,14 +3,14 @@ package com.clowns.foodapp.model.fisebase;
 public class FoodDrinkSize {
     private String sizeId;
     private String sizeName;
-    private Double coef;
+    private Double coefficient;
 
     public FoodDrinkSize() {
     }
 
     public FoodDrinkSize(String sizeName, Double coef) {
         this.sizeName = sizeName;
-        this.coef = coef;
+        this.coefficient = coef;
     }
 
     public String getSizeId() {
@@ -29,11 +29,11 @@ public class FoodDrinkSize {
         this.sizeName = sizeName;
     }
 
-    public Double getCoef() {
-        return coef;
+    public Double getCoefficient() {
+        return coefficient;
     }
 
-    public void setCoef(Double coef) {
-        this.coef = coef;
+    public void setCoefficient(Double coefficient) {
+        this.coefficient = coefficient;
     }
 }

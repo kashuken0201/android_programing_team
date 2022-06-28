@@ -35,7 +35,9 @@ public class FoodDrinkSizeRepository {
                         if (task.isSuccessful()) {
                             List<FoodDrinkSize> list = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                list.add(document.toObject(FoodDrinkSize.class));
+                                FoodDrinkSize foodDrinkSize = document.toObject(FoodDrinkSize.class);
+                                foodDrinkSize.setSizeId(document.getId());
+                                list.add(foodDrinkSize);
                             }
                             foodDrinkSizeLiveData.postValue(list);
                         } else {

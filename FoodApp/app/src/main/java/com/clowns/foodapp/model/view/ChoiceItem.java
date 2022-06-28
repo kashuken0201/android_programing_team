@@ -7,7 +7,8 @@ public class ChoiceItem {
     private String choiceImg;
     private boolean isSelected;
 
-    public ChoiceItem(String choiceName, double choicePrice, String choiceImg) {
+    public ChoiceItem(String choiceId,String choiceName, double choicePrice, String choiceImg) {
+        this.choiceId = choiceId;
         this.choiceName = choiceName;
         this.choicePrice = choicePrice;
         this.choiceImg = choiceImg;

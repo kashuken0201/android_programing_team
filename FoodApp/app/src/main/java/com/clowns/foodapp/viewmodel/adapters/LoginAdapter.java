@@ -1,22 +1,32 @@
 package com.clowns.foodapp.viewmodel.adapters;
 
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.ObservableField;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
 
 
 import com.clowns.foodapp.BR;
 import com.clowns.foodapp.model.fisebase.User;
+import com.clowns.foodapp.viewmodel.UserViewModel;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class LoginAdapter extends BaseObservable {
     private String email;
     private String password;
-    public ArrayList<User> listUser = getListUsers();
     public ObservableField<String> message= new ObservableField<>("Login");
-
+    public LoginAdapter() {
+        this.email = "a@gmail.com";
+        this.password = "123456789";
+    }
     @Bindable
     public String getEmail() {
         return email;
@@ -37,58 +47,37 @@ public class LoginAdapter extends BaseObservable {
         notifyPropertyChanged(BR.password);
     }
 
-    public ArrayList<User> getListUsers(){
-//        ArrayList<User> listUser = new ArrayList<>();
-//        listUser.add(new User("nhan@gmail.com","12345678"));
-//        return listUser;
-        return null;
+    public boolean isValidEmail(){
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    public boolean checkLogin(){
-//        User user = new User(getEmail(),getPassword());
-//        if(user.isValidEmail() && user.isValidPassword()) {
-//            for(int i=0;i<listUser.size();i++) {
-//                if (user.getUsername().equals(listUser.get(i).getUsername())
-//                        && user.getPassword().equals(listUser.get(i).getPassword())) {
-//                    message.set("Succes");
-//                    return true;
-//
-//                }
-//            }
-//        }
-//        else {
-//            message.set("Failed");
-//            return false;
-//        }
-//        return  false;
-        return true;
+    public boolean isValidPassword(){
+        return !TextUtils.isEmpty(password) && password.length()>=8;
+    }
+
+    public boolean checkLogin(User user){
+        if(email.isEmpty() || password.isEmpty()){
+            message.set("Please fill all field");
+            return false;
+        }
+
+        //Log.d("DEBUG", "checkLogin: " + listUser.size());
+        String fullname = "";
+        HashMap<String, Object> cart = new HashMap<>();
+        HashMap<String, Object> favourite = new HashMap<>();
+
+        if(isValidEmail() && isValidPassword()) {
+                if (user.getEmail().equals(getEmail()) && user.getPassword().equals(getPassword())) {
+                    message.set("Login Success");
+                    return true;
+                }
+        }
+        else {
+            message.set("Failed");
+            return false;
+        }
+        return  false;
     }
 
 }
-
-//    public void addUser(User user){
-//        Map<String, Object> obj = new HashMap<>();
-//        obj.put("email", user.getUsername());
-//        obj.put("password", user.getPassword());
-//        obj.put("phoneNumber", " ");
-//        obj.put("uid", " ");
-//        obj.put("username", " ");
-//
-//
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        db.collection("users")
-//                .add(obj)
-//                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                    @Override
-//                    public void onSuccess(DocumentReference documentReference) {
-//                        Log.d("DEBUG", "DocumentSnapshot added with ID: " + documentReference.getId());
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w("DEBUG", "Error adding document", e);
-//                    }
-//                });
-//    }
 

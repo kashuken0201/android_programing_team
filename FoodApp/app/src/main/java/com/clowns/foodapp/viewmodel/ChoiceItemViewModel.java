@@ -17,10 +17,10 @@ public class ChoiceItemViewModel extends ViewModel {
 
     public ChoiceItemViewModel() {
         otherRepository = new OtherRepository();
-        choiceLiveDataList =  otherRepository.getChoiceItemList();
     }
 
     public MutableLiveData<List<ChoiceItem>> getLiveChoiceItemData() {
+        choiceLiveDataList =  otherRepository.getChoiceItemList();
         return choiceLiveDataList;
     }
 }

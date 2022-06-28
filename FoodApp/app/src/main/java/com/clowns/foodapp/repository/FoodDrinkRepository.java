@@ -36,7 +36,9 @@ public class FoodDrinkRepository {
                         if (task.isSuccessful()) {
                             List<FoodDrink> list = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                list.add(document.toObject(FoodDrink.class));
+                                FoodDrink foodDrink = document.toObject(FoodDrink.class);
+                                foodDrink.setId(document.getId());
+                                list.add(foodDrink);
                             }
                             foodDrinkListLiveData.postValue(list);
                         } else {

@@ -8,10 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,13 +19,12 @@ import com.clowns.foodapp.model.fisebase.User;
 import com.clowns.foodapp.repository.UserRepository;
 import com.clowns.foodapp.view.activities.HomeActivity;
 import com.clowns.foodapp.view.activities.WelcomeActivity;
-import com.clowns.foodapp.viewmodel.CategoryViewModel;
 import com.clowns.foodapp.viewmodel.UserViewModel;
 
 public class MyProfileFragment extends Fragment {
 
     FragmentMyProfileBinding binding;
-    User user;
+    User user = User.getInstance();
     // Edited by PhatTT
     UserRepository userRepository = new UserRepository();
 
@@ -65,7 +62,8 @@ public class MyProfileFragment extends Fragment {
 
 
         UserViewModel userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
-        userViewModel.getUser().observe(getViewLifecycleOwner(), new Observer<User>() {
+
+        userViewModel.getUser(user.getEmail()).observe(getViewLifecycleOwner(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
                 binding.nameProfileEt.setText(user.getFullName());

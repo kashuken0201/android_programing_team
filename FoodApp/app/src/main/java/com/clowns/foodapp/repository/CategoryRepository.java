@@ -35,7 +35,9 @@ public class CategoryRepository {
                         if (task.isSuccessful()) {
                             List<Category> list = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                list.add(document.toObject(Category.class));
+                                Category category = document.toObject(Category.class);
+                                category.setCategoryId(document.getId());
+                                list.add(category);
                             }
                             categoryLiveDataList.postValue(list);
                         } else {

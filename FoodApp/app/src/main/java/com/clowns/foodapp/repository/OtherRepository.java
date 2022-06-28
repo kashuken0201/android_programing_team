@@ -38,7 +38,8 @@ public class OtherRepository {
                             List<ChoiceItem> list = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Other other = document.toObject(Other.class);
-                                ChoiceItem choiceItem = new ChoiceItem(other.getOtherName(), other.getPrice(), other.getUrl());
+                                other.setOtherId(document.getId());
+                                ChoiceItem choiceItem = new ChoiceItem(other.getOtherId(),other.getOtherName(), other.getPrice(), other.getUrl());
                                 list.add(choiceItem);
                             }
                             choiceItemListLiveData.postValue(list);

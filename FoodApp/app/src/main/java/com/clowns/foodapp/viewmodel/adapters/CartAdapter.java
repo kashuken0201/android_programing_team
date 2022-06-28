@@ -53,7 +53,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public float getSubtotal(){
         float subtotal = 0;
         for (int i = 0; i < foodDrinkCartList.size(); i++) {
-//            subtotal += foodDrinkCartList.get(i).getPrice();
+            subtotal += foodDrinkCartList.get(i).getPrice();
         }
         return Math.round(subtotal * 100) / 100;
     }

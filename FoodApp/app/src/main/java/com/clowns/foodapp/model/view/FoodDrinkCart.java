@@ -1,8 +1,9 @@
 package com.clowns.foodapp.model.view;
 
+import android.util.Log;
+
 import com.clowns.foodapp.model.fisebase.FoodDrink;
 import com.clowns.foodapp.model.fisebase.FoodDrinkSize;
-import com.clowns.foodapp.model.view.ChoiceItem;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,6 +14,9 @@ public class FoodDrinkCart implements Serializable {
     private int quantity;
     private List<ChoiceItem> choiceItemList;
 
+    public FoodDrinkCart(){
+
+    }
     public FoodDrinkCart(FoodDrink item, FoodDrinkSize size, int quantity, List<ChoiceItem> choiceItemList) {
         this.item = item;
         this.size = size;
@@ -57,7 +61,15 @@ public class FoodDrinkCart implements Serializable {
         for (ChoiceItem choiceItem : choiceItemList) {
             price += choiceItem.getChoicePrice();
         }
-        price = Math.round((price + item.getPrice()) * quantity * 100)/100.0f;
+        price = Math.round((price + item.getPrice()+size.getCoefficient()) * quantity * 100)/100.0f;
         return price;
+    }
+    public String getString(){
+        String str = "";
+        for (ChoiceItem choiceItem : choiceItemList) {
+            str += choiceItem.getChoiceName() + " ";
+        }
+        str += item.getFoodName() + " " + size.getSizeName() + " " + quantity + " " + getPrice();
+        return str;
     }
 }

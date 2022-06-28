@@ -3,9 +3,14 @@ package com.clowns.foodapp.model.fisebase;
 import android.text.TextUtils;
 import android.util.Patterns;
 
+import com.clowns.foodapp.model.view.ChoiceItem;
+import com.clowns.foodapp.model.view.FoodDrinkCart;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class User implements Serializable {
@@ -15,6 +20,14 @@ public class User implements Serializable {
     private String password;
     private HashMap<String, Object> cart;
     private HashMap<String, Object> favourite;
+
+    private static User instance = null;
+    public static User getInstance() {
+        if (instance == null) {
+            instance = new User();
+        }
+        return instance;
+    }
 
     public User() {
     }
@@ -74,12 +87,51 @@ public class User implements Serializable {
     public void setFavourite(HashMap<String, Object> favourite) {
         this.favourite = favourite;
     }
-
-    public boolean isValidEmail(){
-        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    public  String getCartString(){
+        String cartString = "";
+        for (String key : cart.keySet()) {
+            HashMap<String, Object> map = (HashMap<String, Object>) cart.get(key);
+            for (String key1 : map.keySet()) {
+                if (key1.equals("food")) {
+                    if (!(map.get(key1) instanceof FoodDrink)){
+                        return "";
+                    }
+                    FoodDrink foodDrink = (FoodDrink) map.get(key1);
+                    cartString += foodDrink.getFoodName() + ",";
+                }
+                if (key1.equals("foodsize")) {
+                    if (!(map.get(key1) instanceof FoodDrinkSize)){
+                        return "";
+                    }
+                    FoodDrinkSize foodDrinkSize = (FoodDrinkSize) map.get(key1);
+                    cartString += foodDrinkSize.getSizeName() + ",";
+                }
+                if (key1.equals("quantity")){
+                    cartString += map.get(key1) + ",";
+                }
+                if (key1.equals("choiceItemList")) {
+                    HashMap<String, Object> choiceItemMap = (HashMap<String, Object>) map.get(key1);
+                    for (String keyChoice : choiceItemMap.keySet()) {
+                        if (!(choiceItemMap.get(keyChoice) instanceof ChoiceItem)) {
+                            return "";
+                        }
+                        ChoiceItem choiceItem = (ChoiceItem) choiceItemMap.get(keyChoice);
+                        cartString += choiceItem.getChoiceName() + ",";
+                    }
+                }
+            }
+        }
+        return cartString;
     }
 
-    public boolean isValidPassword(){
-        return !TextUtils.isEmpty(password) && password.length()>=8;
+    public void setUser(User user) {
+        this.userId = user.userId;
+        this.fullName = user.fullName;
+        this.email = user.email;
+        this.password = user.password;
+        this.cart = user.cart;
+        this.favourite = user.favourite;
     }
+
+
 }
